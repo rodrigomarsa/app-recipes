@@ -1,0 +1,18 @@
+form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    height: 250px;
+    justify-content: space-between;
+
+}
+
+form button {
+    background-color: #fff;
+    border: none;
+    border-top: solid 1px #d7d9df;
+    height: 66px;
+    width: 256px;
+
+}
