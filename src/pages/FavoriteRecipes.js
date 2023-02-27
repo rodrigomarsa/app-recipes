@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
 import Header from '../components/Header';
 import AppContext from '../context/Context';
@@ -9,6 +10,7 @@ import drink from '../images/drinkscard.svg';
 import meal from '../images/foodscard.svg';
 
 export default function Favorite() {
+  const history = useHistory();
   const [getFavoriteRecipes, setGetFavoriteRecipes] = useState([]);
   const { filterFavoriteRecipes, setFilterFavoriteRecipes } = useContext(AppContext);
   useEffect(() => {
@@ -38,6 +40,7 @@ export default function Favorite() {
         <h4 data-testid="page-title">Favorite Recipes</h4>
         <button
           type="button"
+          onClick={ () => history.push('./profile') }
         >
           <img
             src={ profileIcon }

@@ -48,12 +48,11 @@ export default function RecipeDetails() {
   }, [id]);
 
   useEffect(() => {
-    const isMeal2 = pathname.includes('meals') ? 'meals' : 'drinks';
-    const checkRecipesInProgress = JSON
-      .parse(localStorage.inProgressRecipes)[isMeal2]
-      ? JSON.parse(localStorage.inProgressRecipes)[isMeal2] : [];
-    const checkIds = Object.keys(checkRecipesInProgress);
-    if (checkIds.some((elem) => elem === id)) {
+    if (!localStorage.inProgressRecipes) {
+      const isMeal = pathname.includes('meals') ? 'meals' : 'drinks';
+      localStorage.setItem('inProgressRecipes', JSON.stringify({ [isMeal]: {} }));
+    }
+    if (localStorage.inProgressRecipes.includes(id)) {
       setIsInProgress('Continue Recipe');
     }
   }, [id]);
