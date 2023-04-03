@@ -51,7 +51,7 @@ export default function Login() {
               data-testid="password-input"
               id="password"
               value={ login.password }
-              placeholder="Password"
+              placeholder="Senha maior que 6 caracteres"
               onChange={ ({ target: { name, value } }) => {
                 setLogin({ ...login, [name]: value });
                 validateInputs();
