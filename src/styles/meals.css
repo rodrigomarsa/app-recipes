@@ -1,0 +1,28 @@
+.main__meals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 50px;
+  width: 100%;
+}
+
+.main__meals div {
+  margin-bottom: 10px;
+}
+
+.main__recipes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.main__recipes button {
+  background-color: white;
+  border: none;
+}
+
+.main__recipes img {
+  height: 70px;
+  width: 70px;
+}

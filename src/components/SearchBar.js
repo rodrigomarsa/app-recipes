@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import useFetch from '../hooks/useFetch';
 import AppContext from '../context/Context';
+import '../styles/SearchBar.css';
 
 export default function SearchBar() {
   const { handleChoice, setFilteredApi } = useContext(AppContext);
@@ -56,48 +57,52 @@ export default function SearchBar() {
 
   return (
     <form>
-      <div>
+      <div className="container-search">
         <label htmlFor="searchFood">
           <input
+            className="inputSearch"
             type="text"
             name="searchFood"
             data-testid="search-input"
             onChange={ ({ target }) => setOnChangeInput(target.value) }
+            placeholder="Search"
           />
         </label>
-        <label htmlFor="ingredient">
-          <input
-            type="radio"
-            id="igredient"
-            name="radioSearch"
-            data-testid="ingredient-search-radio"
-            value="igredient"
-            onChange={ ({ target }) => setRadio(target.value) }
-          />
-          Ingredient
-        </label>
-        <label htmlFor="name">
-          <input
-            type="radio"
-            id="name"
-            name="radioSearch"
-            data-testid="name-search-radio"
-            value="name"
-            onChange={ ({ target }) => setRadio(target.value) }
-          />
-          Name
-        </label>
-        <label htmlFor="first-letter">
-          <input
-            type="radio"
-            id="first-letter"
-            name="radioSearch"
-            data-testid="first-letter-search-radio"
-            value="first-letter"
-            onChange={ ({ target }) => setRadio(target.value) }
-          />
-          First letter
-        </label>
+        <div className="container-options">
+          <label htmlFor="ingredient">
+            <input
+              type="radio"
+              id="igredient"
+              name="radioSearch"
+              data-testid="ingredient-search-radio"
+              value="igredient"
+              onChange={ ({ target }) => setRadio(target.value) }
+            />
+            Ingredient
+          </label>
+          <label htmlFor="name">
+            <input
+              type="radio"
+              id="name"
+              name="radioSearch"
+              data-testid="name-search-radio"
+              value="name"
+              onChange={ ({ target }) => setRadio(target.value) }
+            />
+            Name
+          </label>
+          <label htmlFor="first-letter">
+            <input
+              type="radio"
+              id="first-letter"
+              name="radioSearch"
+              data-testid="first-letter-search-radio"
+              value="first-letter"
+              onChange={ ({ target }) => setRadio(target.value) }
+            />
+            First letter
+          </label>
+        </div>
         <button
           type="button"
           data-testid="exec-search-btn"
@@ -105,6 +110,7 @@ export default function SearchBar() {
             handleClick();
             setFilteredApi(url);
           } }
+          className="btn-search"
         >
           Search
         </button>

@@ -1,0 +1,22 @@
+.main__favorites main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  width: 100%;
+}
+
+.main__favorites section{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main__favorites main div{ 
+    margin-top: 15px;
+}
+
+.favorite__btn button {
+  background-color: white;
+  border: none;
+  margin-right: 20px;
+}

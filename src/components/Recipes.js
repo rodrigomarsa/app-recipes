@@ -2,6 +2,17 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../context/Context';
 import RecipeCard from './RecipeCard';
+import all from '../images/all.svg';
+import Breakfast from '../images/breakfast.svg';
+import Chicken from '../images/chicken.svg';
+import Dessert from '../images/dessert.svg';
+import ordinary from '../images/drink.svg';
+import Cocktail from '../images/cocktail.svg';
+import Shake from '../images/shake.svg';
+import other from '../images/other.svg';
+import Cocoa from '../images/cocoa.svg';
+import Beef from '../images/beef.svg';
+import Goat from '../images/goat.svg';
 
 export default function Recipes({ urlSearch, urlList, urlFilter }) {
   const { handleDish, handleEndPoint } = useContext(AppContext);
@@ -11,6 +22,18 @@ export default function Recipes({ urlSearch, urlList, urlFilter }) {
   const [isCategoryTrue, setIsCategoryTrue] = useState(true);
   const history = useHistory();
   const url = !slugCategory ? urlSearch : (`${urlFilter}${slugCategory}`);
+  const images = {
+    Beef,
+    Breakfast,
+    Chicken,
+    Dessert,
+    Goat,
+    'Ordinary Drink': ordinary,
+    Cocktail,
+    Shake,
+    'Other / Unknown': other,
+    Cocoa,
+  };
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -42,28 +65,28 @@ export default function Recipes({ urlSearch, urlList, urlFilter }) {
 
   return (
     <main>
-      <div>
+      <div className="main__recipes">
+        <input
+          type="image"
+          alt="all_recipes"
+          data-testid="All-category-filter"
+          onClick={ () => setSlugCategory('') }
+          src={ all }
+        />
         { categoryApi.filter((e, index) => index <= Number('4')).map((e, index) => (
-          <button
+          <input
             key={ index }
-            type="button"
+            type="image"
+            alt={ e.strCategory }
             data-testid={ `${e.strCategory}-category-filter` }
             name={ e.strCategory }
             value={ e.strCategory }
             onClick={ ({ target }) => { handleChangeCategory(target); } }
-          >
-            {e.strCategory}
-          </button>
+            src={ images[e.strCategory] }
+          />
         ))}
-        <button
-          type="button"
-          data-testid="All-category-filter"
-          onClick={ () => setSlugCategory('') }
-        >
-          All
-        </button>
       </div>
-      <div>
+      <div className="main__meals">
         { handleDish
           ? history.push(`./${handleDish}/${handleEndPoint}`)
           : recipeApi && recipeApi
